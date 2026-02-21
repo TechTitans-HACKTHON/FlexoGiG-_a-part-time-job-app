@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlexoGig | Student Part-Time Gigs</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <div class="logo" onclick="app.navigate('home')">
+                <span class="flexo">Flexo</span><span class="gig">Gig</span>
+            </div>
+            <div class="nav-links" id="nav-links">
+                <!-- Links dynamically rendered based on auth status -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main id="app-container">
+        <!-- Views will be injected here -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 FlexoGig. Designed for the next generation of workers.</p>
+        </div>
+    </footer>
+
+    <!-- Templates (Hidden) -->
+    <div id="templates" style="display: none;">
+        <!-- Landing View Template -->
+        <section id="view-landing">
+            <div class="hero">
+                <div class="container">
+                    <h1>Your First Paycheck is One Gig Away</h1>
+                    <p>FlexoGig connects students 16+ with verified local businesses for flexible, high-paying part-time work.</p>
+                    <div class="hero-btns">
+                        <button class="btn btn-primary btn-lg" onclick="app.navigate('register')">Get Started</button>
+                        <button class="btn btn-secondary btn-lg" onclick="app.navigate('login')">Login</button>
+                    </div>
+                </div>
+            </div>
+            <div class="features container">
+                <div class="feature-card">
+                    <i class="fas fa-id-card"></i>
+                    <h3>Secure Profiles</h3>
+                    <p>Verified with Aadhaar for safety and trust.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-indian-rupee-sign"></i>
+                    <h3>Fast Payment</h3>
+                    <p>Competitive hourly rates in Rupees (₹).</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Flexible Hours</h3>
+                    <p>Work shifts that fit your study schedule.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Login View Template -->
+        <section id="view-login">
+            <div class="auth-container">
+                <div class="auth-card">
+                    <h2>Welcome Back</h2>
+                    <form id="login-form" onsubmit="app.handleLogin(event)">
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" id="login-phone" placeholder="9876543210" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" id="login-password" placeholder="••••••••" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                        <p class="auth-footer">New to FlexoGig? <a href="#" onclick="app.navigate('register')">Join now</a></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Register View Template -->
+        <section id="view-register">
+            <div class="auth-container">
+                <div class="auth-card wide">
+                    <h2>Join FlexoGig</h2>
+                    <p>Must be 16 or older to apply.</p>
+                    <form id="register-form" onsubmit="app.handleRegister(event)">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Full Name</label>
+                                <input type="text" id="reg-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone (Primary Contact)</label>
+                                <input type="tel" id="reg-phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Aadhaar Number (UIDAI)</label>
+                                <input type="text" id="reg-aadhaar" pattern="[0-9]{12}" placeholder="12 Digit Aadhaar" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Age</label>
+                                <input type="number" id="reg-age" min="16" max="99" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Address</label>
+                                <input type="text" id="reg-address" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Gender</label>
+                                <select id="reg-gender">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group full-width">
+                                <label>Work Interests (Select Multiple)</label>
+                                <div class="interests-grid">
+                                    <label><input type="checkbox" name="interests" value="Cafe"> Cafe/Barista</label>
+                                    <label><input type="checkbox" name="interests" value="Library"> Library</label>
+                                    <label><input type="checkbox" name="interests" value="Retail"> Retail Store</label>
+                                    <label><input type="checkbox" name="interests" value="Delivery"> Delivery</label>
+                                    <label><input type="checkbox" name="interests" value="Tutor"> Private Tutor</label>
+                                    <label><input type="checkbox" name="interests" value="Events"> Event Staff</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Create Password</label>
+                                <input type="password" id="reg-password" required minlength="6">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Complete Registration</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard View -->
+        <section id="view-dashboard">
+            <div class="dashboard-layout container">
+                <aside class="dashboard-sidebar">
+                    <div class="profile-summary">
+                        <div class="profile-avatar"><i class="fas fa-user-circle"></i></div>
+                        <h3 id="dash-user-name">User Name</h3>
+                        <p id="dash-user-qualification">Student</p>
+                    </div>
+                    <ul class="dash-nav">
+                        <li class="active" onclick="app.switchDashTab('jobs')"><i class="fas fa-briefcase"></i> Find Gigs</li>
+                        <li onclick="app.switchDashTab('applications')"><i class="fas fa-paper-plane"></i> Applications</li>
+                        <li onclick="app.switchDashTab('profile-edit')"><i class="fas fa-user-edit"></i> Edit Profile</li>
+                    </ul>
+                </aside>
+
+                <div class="dashboard-content" id="dash-main-content">
+                    <!-- Tab Content Appears Here -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
