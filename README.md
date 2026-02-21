@@ -1,4 +1,4 @@
-# FlexoGig - Student & Young Adult Gig Platform
+# FlexoGig-Student & Young Adult Gig Platform
 
 FlexoGig is a specialized part-time job portal designed for students (16+) and young adults to find high-quality local gigs. The platform prioritizes high-pay hourly work, flexible scheduling, and verified safety via Aadhaar registration.
 
